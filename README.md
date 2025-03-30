@@ -20,7 +20,7 @@ This is a **full-featured e-commerce application** built using the **MERN (Mongo
 - React.js
 - Redux Toolkit (State Management)
 - React Router
-- Tailwind CSS / Material UI
+- Tailwind CSS
 
 ### **Backend:**
 - Node.js
@@ -120,7 +120,7 @@ npm run build
 Then, deploy the `build/` folder to Vercel or Netlify.
 
 ### **Deploying the Backend:**
-Ensure your `.env` file is configured correctly, then push the code to a **Heroku/Render/AWS** environment.
+Ensure your `.env` file is configured correctly.
 
 ---
 
@@ -132,19 +132,11 @@ Ensure your `.env` file is configured correctly, then push the code to a **Herok
 
 ---
 
-## 📌 Upcoming Features
-- **Google & Facebook Authentication**
-- **Real-time Order Notifications**
-- **Discount Coupons & Promo Codes**
-- **Multi-Vendor Marketplace Support**
-
----
-
 ## 👨‍💻 Contributing
 Pull requests are welcome! If you have suggestions for improvements, feel free to open an issue.
 
 ---
 
 ## 📞 Contact
-For any queries or collaboration, reach out at: **your@email.com**
+For any queries or collaboration, reach out at: **mdsamaratib@gmail.com**
 
