@@ -62,7 +62,7 @@ function App() {
         </Route>
         <Route
           path="/admin"
-          element={
+          element={ 
             <CheckAuth isAuthenticated={isAuthenticated} user={user}>
               <AdminLayout />
             </CheckAuth>
@@ -75,7 +75,7 @@ function App() {
         </Route>
         <Route
           path="/shop"
-          element={
+          element={ 
             <CheckAuth isAuthenticated={isAuthenticated} user={user}>
               <ShoppingLayout />
             </CheckAuth>
