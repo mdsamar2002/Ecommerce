@@ -5,7 +5,6 @@ const User = require("../../models/User");
 //register
 const registerUser = async (req, res) => {
   const { userName, email, password } = req.body;
-
   try {
     const checkUser = await User.findOne({ email });
     if (checkUser)
@@ -27,7 +26,6 @@ const registerUser = async (req, res) => {
       message: "Registration successful",
     });
   } catch (e) {
-    console.log(e);
     res.status(500).json({
       success: false,
       message: "Some error occured",
@@ -79,7 +77,7 @@ const loginUser = async (req, res) => {
       },
     });
   } catch (e) {
-    console.log(e);
+  
     res.status(500).json({
       success: false,
       message: "Some error occured",

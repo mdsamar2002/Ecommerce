@@ -50,7 +50,6 @@ const createOrder = async (req, res) => {
 
     paypal.payment.create(create_payment_json, async (error, paymentInfo) => {
       if (error) {
-        console.log(error);
 
         return res.status(500).json({
           success: false,
@@ -86,7 +85,6 @@ const createOrder = async (req, res) => {
       }
     });
   } catch (e) {
-    console.log(e);
     res.status(500).json({
       success: false,
       message: "Some error occured!",
@@ -138,7 +136,6 @@ const capturePayment = async (req, res) => {
       data: order,
     });
   } catch (e) {
-    console.log(e);
     res.status(500).json({
       success: false,
       message: "Some error occured!",
@@ -164,7 +161,6 @@ const getAllOrdersByUser = async (req, res) => {
       data: orders,
     });
   } catch (e) {
-    console.log(e);
     res.status(500).json({
       success: false,
       message: "Some error occured!",
@@ -190,7 +186,6 @@ const getOrderDetails = async (req, res) => {
       data: order,
     });
   } catch (e) {
-    console.log(e);
     res.status(500).json({
       success: false,
       message: "Some error occured!",

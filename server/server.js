@@ -2,6 +2,7 @@ const express = require("express");
 const connectDB = require('./db/db')
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const dotenv = require("dotenv")
 const authRouter = require("./routes/auth/auth-routes");
 const adminProductsRouter = require("./routes/admin/products-routes");
 const adminOrderRouter = require("./routes/admin/order-routes");
@@ -12,17 +13,16 @@ const shopAddressRouter = require("./routes/shop/address-routes");
 const shopOrderRouter = require("./routes/shop/order-routes");
 const shopSearchRouter = require("./routes/shop/search-routes");
 const shopReviewRouter = require("./routes/shop/review-routes");
-
 const commonFeatureRouter = require("./routes/common/feature-routes");
 
-//create a database connection -> u can also
-//create a separate file for this and then import/use that file here
+const path = require("path");
+const fileURLToPath = require("url");
 
 
+dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
-connectDB();
-app.
+
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -38,8 +38,14 @@ app.use(
   })
 );
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);  
+app.use(express.static(path.join(__dirname,"../client/dist")));
 app.use(cookieParser());
-app.use(express.json());
+app.use(express.json({}));
+app.use(express.urlencoded({extended:"16kb"}));
+
+
 app.use("/api/auth", authRouter);
 app.use("/api/admin/products", adminProductsRouter);
 app.use("/api/admin/orders", adminOrderRouter);
@@ -52,4 +58,7 @@ app.use("/api/shop/search", shopSearchRouter);
 app.use("/api/shop/review", shopReviewRouter);
 app.use("/api/common/feature", commonFeatureRouter);
 
-app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));
+connectDB().then(()=>{
+  app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));
+})
+

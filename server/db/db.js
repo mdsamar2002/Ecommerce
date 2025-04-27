@@ -1,13 +1,11 @@
 const mongoose = require('mongoose')
 
-const mongoURI = "mongodb://localhost:27017/ecommerce"; // Replace 'mydatabase' with your DB name
+
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(mongoURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const dbURL = process.env.MONGO_URI;
+    await mongoose.connect(dbURL);
     console.log("MongoDB connected successfully");
   } catch (error) {
     console.error("MongoDB connection failed:", error);
